@@ -1,3 +1,4 @@
+import Nav from "@/components/Nav";
 import { useSession, signIn, signOut } from "next-auth/react"
 
 export default function Home() {
@@ -14,10 +15,9 @@ export default function Home() {
   }
 
   return (
-    <div className="bg-blue-600 w-screen h-screen flex items-center">
-      <div className="text-center w-full">
-        <h3>Iniciaste sesión {session.user.email}</h3>
-      </div>
+    <div className="bg-blue-900 min-h-screen flex">
+        <Nav></Nav>
+        <div className="bg-white flex-grow mt-2 mr-2 mb-2 rounded-lg p-4">Iniciaste sesión {session.user.email}</div>
     </div>
   );
 }
