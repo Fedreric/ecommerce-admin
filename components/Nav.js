@@ -1,8 +1,11 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 export default function Nav() {
     const inactiveLinks = 'flex gap-1';
-    const activeLinks = inactiveLinks+' bg-white text-blue-900 rounded-l-lg'
+    const activeLinks = inactiveLinks+' bg-white text-blue-900 rounded-l-md'
+    const router = useRouter();
+    const { pathname } = router;
   return (
     <aside className="text-white p-4 pr-0">
       <Link href={"/"} className="flex gap-1 mb-4 mr-4">
@@ -23,7 +26,7 @@ export default function Nav() {
         <span className="">Ecommerce-Admin</span>
       </Link>
       <nav className="flex flex-col gap-2">
-        <Link href={"/"} className={activeLinks}>
+        <Link href={"/"} className={pathname === '/' ? activeLinks : inactiveLinks}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -40,7 +43,7 @@ export default function Nav() {
           </svg>
           Dashboard
         </Link>
-        <Link href={"/products"} className={inactiveLinks}>
+        <Link href={"/products"} className={pathname.includes('/products') ? activeLinks : inactiveLinks}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -57,7 +60,7 @@ export default function Nav() {
           </svg>
           Products
         </Link>
-        <Link href={"/orders"} className={inactiveLinks}>
+        <Link href={"/orders"} className={pathname.includes('/orders') ? activeLinks : inactiveLinks}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -74,7 +77,7 @@ export default function Nav() {
           </svg>
           Orders
         </Link>
-        <Link href={"/settings"} className={inactiveLinks}>
+        <Link href={"/settings"} className={pathname.includes('/settings') ? activeLinks : inactiveLinks}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
